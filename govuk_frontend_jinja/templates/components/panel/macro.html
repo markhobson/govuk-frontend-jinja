@@ -44,12 +44,14 @@
     {%- if actions.classes %} {{ actions.classes }}{% endif -%}"
     {{- govukAttributes(actions.attributes) }}>
 
+    {%- if actions['items'] is sequence -%}
     {%- if actions['items'] | length -%}
     <div class="govuk-button-group">
     {% for action in actions['items'] %}
       {{ _panelAction(action) | safe | trim | indent(6) }}
     {% endfor %}
     </div>
+    {%- endif -%}
     {%- endif -%}
 
   </div>
